@@ -248,7 +248,7 @@
             };
 
             try {
-                var respuesta = await fetch('http://localhost:8000/registrar', {
+                var respuesta = await fetch('/registrar', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(datos)
@@ -264,41 +264,24 @@
             } catch (error) {
                 alert('Error al conectar con el servidor.');
             }
-        });
 
         // BOTÓN MOSTRAR USUARIOS
         document.getElementById('btnVerUsuarios').addEventListener('click', async function() {
-            var contenedor = document.getElementById('contenedorLista');
-            var lista = document.getElementById('listaContenido');
-            
-            try {
-                var respuesta = await fetch('http://localhost:8000/usuarios');
-                var usuarios = await respuesta.json();
-                
-                lista.innerHTML = ""; 
-                contenedor.style.display = "block"; 
-                
-                if (usuarios.length === 0) {
-                    lista.innerHTML = "<p style='color: #888;'>No hay miembros guardados todavía.</p>";
-                    return;
+                try {
+                    var respuesta = await fetch('/usuarios');
+                    var usuarios = await respuesta.json();
+                    
+                    if (respuesta.ok) {
+                        console.log(usuarios);
+                        alert('Usuarios cargados correctamente (revisa la consola).');
+                    } else {
+                        alert('Error al obtener usuarios.');
+                    }
+                } catch (error) {
+                    alert('Error al conectar con el servidor.');
                 }
-
-                for (var i = 0; i < usuarios.length; i++) {
-                    var u = usuarios[i];
-                    lista.innerHTML += `
-                        <div class='usuario-item'>
-                            👤 <strong>${u.nombre}</strong> (CC: ${u.identificacion} - ${u.lugar_expedicion})<br>
-                            💼 Rol: <span style='color: #d4af37;'>${u.rol}</span> | Ocupación: ${u.ocupacion}<br>
-                            🎓 Estudios: ${u.estudios} | Discapacidad: ${u.discapacidad}<br>
-                            📞 Tel: ${u.telefono} | ✉️ Correo: ${u.correo}
-                        </div>
-                    `;
-                }
-            } catch (error) {
-                alert('Error al traer los miembros desde el Backend.');
-            }
+            });
         });
     </script>
-
 </body>
 </html>
