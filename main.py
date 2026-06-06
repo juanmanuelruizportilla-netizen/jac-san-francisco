@@ -28,7 +28,10 @@ class UsuarioRegistro(BaseModel):
     telefono: str
     correo: str
 
-DB_URL = "sqlite:///./comunidad_elite.db"
+# 👇 TRUCO PARA VERCEL: Usar la carpeta /tmp para que nos deje escribir la base de datos
+DB_DIR = "/tmp" if os.environ.get("VERCEL") else "."
+DB_URL = f"sqlite:///{DB_DIR}/comunidad_elite.db"
+
 engine = create_engine(DB_URL, connect_args={"check_same_thread": False})
 Base = declarative_base()
 
@@ -51,12 +54,13 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 @app.get("/", response_class=HTMLResponse)
 def leer_raiz():
-    ruta_html = os.path.join(os.path.dirname(__file__), "registro.html")
+    # 👇 Ruta exacta para encontrar el HTML en los servidores de Vercel
+    ruta_html = os.path.join(os.path.dirname(os.path.abspath(__file__)), "registro.html")
     try:
         with open(ruta_html, "r", encoding="utf-8") as archivo:
             return archivo.read()
-    except Exception:
-        return "<h2>Error: No encontré el archivo 'registro.html'.</h2>"
+    except Exception as e:
+        return f"<h2>Error: No encontré el archivo 'registro.html'. Detalle: {str(e)}</h2>"
 
 @app.post("/registrar")
 def registrar_usuario(usuario: UsuarioRegistro):
