@@ -198,16 +198,27 @@
                 </div>
             </div>
 
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="rol">Especialidad en Comunidad</label>
-                    <select id="rol" required>
-                        <option value="" disabled selected>Selecciona una opción</option>
-                        <option value="Barbero">Barbería Elite</option>
-                        <option value="Agronomo">Agrónomo / Campo</option>
-                        <option value="Miembro">Miembro Regular</option>
-                    </select>
-                </div>
+         <div class="form-row">
+            <div class="form-group">
+                <label for="rol">Tipo de Miembro</label>
+                <select id="rol" required>
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="Barbero">Barbería Elite</option>
+                    <option value="Agronomo">Agrónomo / Campo</option>
+                    <option value="Miembro">Miembro Regular</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="genero">¿Cuál es tu género?</label>
+                <select id="genero" required>
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="LGBTQ+">LGBTQ+</option>
+                </select>
+            </div>
+        </div>
                 <div class="form-group">
                     <label for="discapacidad">¿Presenta alguna Discapacidad?</label>
                     <select id="discapacidad" required>
@@ -229,12 +240,12 @@
         </div>
     </div>
 
-    <script>
-        // FORMULARIO DE REGISTRO
+    var API_EXCEL = "https://api.sheetbest.com/sheets/b0ea9caf-f675-489f-9cae-feaef4dad973";
+
+        // 1. FUNCIÓN PARA REGISTRAR USUARIOS DIRECTO EN EXCEL
         document.getElementById('registroForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            // Recolectamos todos los valores de las nuevas cajas
+
             var datos = {
                 nombre: document.getElementById('nombre').value,
                 rol: document.getElementById('rol').value,
@@ -242,46 +253,71 @@
                 lugar_expedicion: document.getElementById('lugar_expedicion').value,
                 estudios: document.getElementById('estudios').value,
                 ocupacion: document.getElementById('ocupacion').value,
+                genero: document.getElementById('genero').value,
                 discapacidad: document.getElementById('discapacidad').value,
                 telefono: document.getElementById('telefono').value,
                 correo: document.getElementById('correo').value
             };
 
             try {
-                var respuesta = await fetch('/registrar', {
+                var respuesta = await fetch(API_EXCEL, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(datos)
                 });
 
-                var resultado = await respuesta.json();
                 if (respuesta.ok) {
-                    alert('¡Éxito! ' + resultado.mensaje);
+                    alert('¡Éxito! Miembro registrado permanentemente en la base de datos.');
                     document.getElementById('registroForm').reset();
                 } else {
-                    alert('Error: ' + resultado.detail);
+                    alert('Error al guardar en el servidor de Excel.');
                 }
             } catch (error) {
-                alert('Error al conectar con el servidor.');
+                alert('Error al conectar con la base de datos.');
             }
-
-        // BOTÓN MOSTRAR USUARIOS
-        document.getElementById('btnVerUsuarios').addEventListener('click', async function() {
-                try {
-                    var respuesta = await fetch('/usuarios');
-                    var usuarios = await respuesta.json();
-                    
-                    if (respuesta.ok) {
-                        console.log(usuarios);
-                        alert('Usuarios cargados correctamente (revisa la consola).');
-                    } else {
-                        alert('Error al obtener usuarios.');
-                    }
-                } catch (error) {
-                    alert('Error al conectar con el servidor.');
-                }
-            });
         });
-    </script>
-</body>
-</html>
+
+        // 2. FUNCIÓN PARA VER LOS USUARIOS GUARDADOS EN PÁGINA
+        document.getElementById('btnVerUsuarios').addEventListener('click', async function() {
+            try {
+                var respuesta = await fetch(API_EXCEL);
+                var usuarios = await respuesta.json();
+                
+                if (respuesta.ok) {
+                    var contenedor = document.getElementById('listaUsuarios');
+                    if (!contenedor) {
+                        alert('Usuarios cargados correctamente. Revisa tu archivo de Google Sheets.');
+                        return;
+                    }
+                    
+                    contenedor.innerHTML = ''; // Limpiar la lista antes de mostrar
+
+                    if (usuarios.length === 0) {
+                        contenedor.innerHTML = '<p style="text-align:center;">No hay usuarios registrados aún.</p>';
+                        return;
+                    }
+
+                    // Dibujar cada usuario en pantalla con el diseño dorado elegante
+                    usuarios.forEach(function(u) {
+                        var tarjeta = document.createElement('div');
+                        tarjeta.style.background = '#1a1a1a';
+                        tarjeta.style.border = '1px solid #d4af37';
+                        tarjeta.style.padding = '15px';
+                        tarjeta.style.marginBottom = '10px';
+                        tarjeta.style.borderRadius = '5px';
+
+                        tarjeta.innerHTML = `
+                            <p style="margin: 0; font-weight: bold; color: #d4af37; font-size: 16px;">${u.nombre || 'Sin nombre'}</p>
+                            <p style="margin: 5px 0 0 0; font-size: 14px; color: white;"><strong>Rol:</strong> ${u.rol || ''} | <strong>Género:</strong> ${u.genero || ''}</p>
+                            <p style="margin: 5px 0 0 0; font-size: 14px; color: white;"><strong>Cédula:</strong> ${u.identificacion || ''} (${u.lugar_expedicion || ''})</p>
+                            <p style="margin: 5px 0 0 0; font-size: 14px; color: #aaa;"><strong>Teléfono:</strong> ${u.telefono || ''} | <strong>Correo:</strong> ${u.correo || ''}</p>
+                        `;
+                        contenedor.appendChild(tarjeta);
+                    });
+                } else {
+                    alert('Error al leer la base de datos.');
+                }
+            } catch (error) {
+                alert('Error de conexión al leer usuarios.');
+            }
+        });
