@@ -201,8 +201,8 @@
            <!-- Línea 199: Aquí cierra la fila de estudios y ocupación perfectamente --> 
 
 <!-- NUEVA FILA (Línea 200 en adelante): Para meter Género y Discapacidad juntos -->
+<!-- FILA: GÉNERO Y DISCAPACIDAD -->
 <div class="form-row">
-
     <div class="form-group">
         <label for="genero">¿Cuál es tu género?</label>
         <select id="genero" required>
@@ -212,8 +212,22 @@
             <option value="LGBTQ+">LGBTQ+</option>
         </select>
     </div>
+    <div class="form-group">
+        <label for="discapacidad">¿Presenta alguna Discapacidad?</label>
+        <select id="discapacidad" required>
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option value="Ninguna">Ninguna</option>
+            <option value="Física">Física</option>
+            <option value="Visual">Visual</option>
+            <option value="Auditiva">Auditiva</option>
+            <option value="Intelectual/Mental">Intelectual/Mental</option>
+            <option value="Otra">Otra</option>
+        </select>
+    </div>
+</div>
 
-    <div class="form-row">
+<!-- FILA: EDAD Y FECHA DE NACIMIENTO -->
+<div class="form-row">
     <div class="form-group">
         <label for="rango_edad">Rango de Edad</label>
         <select id="rango_edad" required>
@@ -248,21 +262,6 @@
                 </select>
             </div>
         </div>
-
-    <!-- Bloque de Discapacidad -->
-    <div class="form-group">
-        <label for="discapacidad">¿Presenta alguna Discapacidad?</label>
-        <select id="discapacidad" required>
-            <option value="" disabled selected>Selecciona una opción</option>
-            <option value="Ninguna">Ninguna</option>
-            <option value="Física">Física</option>
-            <option value="Visual">Visual</option>
-            <option value="Auditiva">Auditiva</option>
-            <option value="Otra">Otra</option>
-        </select>
-    </div>
-
-</div> <!-- Aquí cierra la fila de género y discapacidad -->
 
             <button type="submit" class="btn-registrar">Registrarse</button>
         </form>
