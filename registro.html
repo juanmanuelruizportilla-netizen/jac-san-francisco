@@ -198,28 +198,37 @@
                 </div>
             </div>
 
-    
-            </div>
+           <!-- Línea 199: Aquí cierra la fila de estudios y ocupación perfectamente -->
+</div> 
 
-            <div class="form-group">
-                <label for="genero">¿Cuál es tu género?</label>
-                <select id="genero" required>
-                    <option value="" disabled selected>Selecciona una opción</option>
-                    <option value="Masculino">Masculino</option>
-                    <option value="Femenino">Femenino</option>
-                    <option value="LGBTQ+">LGBTQ+</option>
-                </select>
-            </div>
-        </div>
-                <div class="form-group">
-                    <label for="discapacidad">¿Presenta alguna Discapacidad?</label>
-                    <select id="discapacidad" required>
-                        <option value="" disabled selected>Selecciona</option>
-                        <option value="No">No</option>
-                        <option value="Sí">Sí</option>
-                    </select>
-                </div>
-            </div>
+<!-- NUEVA FILA (Línea 200 en adelante): Para meter Género y Discapacidad juntos -->
+<div class="form-row">
+
+    <!-- Bloque de Género -->
+    <div class="form-group">
+        <label for="genero">¿Cuál es tu género?</label>
+        <select id="genero" required>
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+            <option value="LGBTQ+">LGBTQ+</option>
+        </select>
+    </div>
+
+    <!-- Bloque de Discapacidad -->
+    <div class="form-group">
+        <label for="discapacidad">¿Presenta alguna Discapacidad?</label>
+        <select id="discapacidad" required>
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option value="Ninguna">Ninguna</option>
+            <option value="Física">Física</option>
+            <option value="Visual">Visual</option>
+            <option value="Auditiva">Auditiva</option>
+            <option value="Otra">Otra</option>
+        </select>
+    </div>
+
+</div> <!-- Aquí cierra la fila de género y discapacidad -->
 
             <button type="submit" class="btn-registrar">Registrarse</button>
         </form>
@@ -240,7 +249,7 @@
 
             var datos = {
                 nombre: document.getElementById('nombre').value,
-               rol: "Comunidad", //  Dejándola así, en tu Excel se seguirá escribiendo la palabra "Comunidad" automáticamente
+                rol: "Comunidad", //  Dejándola así, en tu Excel se seguirá escribiendo la palabra "Comunidad" automáticamente
                 identificacion: document.getElementById('identificacion').value,
                 lugar_expedicion: document.getElementById('lugar_expedicion').value,
                 estudios: document.getElementById('estudios').value,
