@@ -1,380 +1,331 @@
+:Formulario JAC San Francisco:registro.html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comunidad Elite - Registro Completo</title>
+    <title>Registro de Afiliados - JAC San Francisco</title>
+    <!-- Tailwind CSS para un diseño ultra-premium y responsivo -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
+        /* Estilos personalizados para el tema oscuro y dorado */
         body {
-            background-color: #0b0b0b;
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-image: radial-gradient(circle, #1a150d 0%, #0b0b0b 100%);
-            flex-direction: column;
-            padding: 40px 20px;
+            background-color: #0b0f19;
+            background-image: radial-gradient(circle at 50% 50%, #151f32 0%, #0b0f19 100%);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
-
-        .container {
-            background-color: #121212;
-            padding: 40px;
-            border-radius: 15px;
-            width: 100%;
-            max-width: 600px; /* Un poco más ancho para que quepa todo cómodo */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-            border: 1px solid #d4af37;
-            text-align: center;
-            margin-bottom: 20px;
+        .gold-border {
+            border: 2px solid #d4af37;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.15);
         }
-
-        h2 {
+        .gold-text {
             color: #d4af37;
-            font-size: 2rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
         }
-
-        p.subtitle {
-            color: #888;
-            font-size: 0.9rem;
-            margin-bottom: 30px;
-        }
-
-        /* Diseño en dos columnas para campos cortos */
-        .form-row {
-            display: flex;
-            gap: 15px;
-        }
-
-        .form-group {
-            text-align: left;
-            margin-bottom: 20px;
-            flex: 1;
-        }
-
-        label {
-            display: block;
-            color: #d4af37;
-            font-size: 0.85rem;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 12px 15px;
-            background-color: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 8px;
-            color: #fff;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        input:focus, select:focus {
-            outline: none;
-            border-color: #d4af37;
-            box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
-        }
-
-        .btn-registrar {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(135deg, #d4af37 0%, #aa841b 100%);
-            border: none;
-            border-radius: 8px;
-            color: #000;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: transform 0.2s, opacity 0.2s;
-            margin-top: 10px;
-        }
-
-        .btn-registrar:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
-        }
-
-        .btn-ver {
-            width: 100%;
-            padding: 10px;
-            background-color: transparent;
-            border: 1px solid #d4af37;
-            border-radius: 8px;
-            color: #d4af37;
-            font-size: 0.9rem;
-            cursor: pointer;
-            margin-top: 15px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-ver:hover {
+        .gold-bg {
             background-color: #d4af37;
-            color: #000;
         }
-
-        .lista-usuarios {
-            margin-top: 20px;
-            text-align: left;
-            background-color: #1a1a1a;
-            border-radius: 8px;
-            padding: 15px;
-            display: none;
-            border: 1px solid #333;
-            max-height: 400px;
-            overflow-y: auto;
+        .gold-bg:hover {
+            background-color: #bfa030;
         }
-
-        .usuario-item {
-            padding: 12px 0;
-            border-bottom: 1px solid #333;
-            font-size: 0.9rem;
-            line-height: 1.4;
+        /* Personalización de los campos de entrada */
+        input, select {
+            background-color: #111827 !important;
+            border: 1px solid #374151 !important;
+            color: #f3f4f6 !important;
+            transition: all 0.3s ease;
         }
-        .usuario-item:last-child {
-            border-bottom: none;
-        }
-
-        .footer-text {
-            margin-top: 25px;
-            font-size: 0.9rem;
-            color: #888;
+        input:focus, select:focus {
+            border-color: #d4af37 !important;
+            box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2) !important;
+            outline: none;
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col items-center justify-start p-4 md:p-8 text-gray-100">
 
-    <div class="container">
-        <h2>Únete a la Comunidad</h2>
-        <p class="subtitle">unete a la comunidad de la JAC San Francisco</p>
+    <div class="w-full max-w-4xl">
+        <!-- Encabezado de la Junta de Acción Comunal -->
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-extrabold gold-text tracking-wide uppercase">
+                Junta de Acción Comunal
+            </h1>
+            <p class="text-lg md:text-xl text-gray-400 mt-2 font-semibold">
+                Barrio San Francisco - Bolívar, Cauca
+            </p>
+            <div class="h-1 w-24 gold-bg mx-auto mt-4 rounded-full"></div>
+        </header>
 
-        <form id="registroForm">
-            <div class="form-group">
-                <label for="nombre">Nombre Completo</label>
-                <input type="text" id="nombre" placeholder="Ej. Mateo López" required>
+        <!-- Contenedor Principal con Borde Dorado -->
+        <main class="gold-border bg-gray-900/80 backdrop-blur-md rounded-2xl p-6 md:p-8 mb-8">
+            <h2 class="text-xl font-bold mb-6 pb-2 border-b border-gray-800 text-gray-200 flex items-center gap-2">
+                <span class="gold-text">📝</span> Formulario de Registro de Afiliados
+            </h2>
+
+            <!-- Banner de Alertas (Mensajes de éxito o error) -->
+            <div id="alertBanner" class="hidden mb-6 p-4 rounded-xl text-center font-semibold transition-all duration-300"></div>
+
+            <form id="registroForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Campo: Nombre Completo -->
+                <div class="flex flex-col gap-2 md:col-span-2">
+                    <label for="nombre" class="text-sm font-semibold text-gray-300">Nombre Completo</label>
+                    <input type="text" id="nombre" required placeholder="Ej. Juan Carlos Pérez" class="p-3 rounded-lg w-full">
+                </div>
+
+                <!-- Campo: Identificación -->
+                <div class="flex flex-col gap-2">
+                    <label for="identificacion" class="text-sm font-semibold text-gray-300">Número de Identificación</label>
+                    <input type="number" id="identificacion" required placeholder="Ej. 1061789..." class="p-3 rounded-lg w-full">
+                </div>
+
+                <!-- Campo: Lugar de Expedición -->
+                <div class="flex flex-col gap-2">
+                    <label for="lugar_expedicion" class="text-sm font-semibold text-gray-300">Lugar de Expedición</label>
+                    <input type="text" id="lugar_expedicion" required placeholder="Ej. Bolívar, Cauca" class="p-3 rounded-lg w-full">
+                </div>
+
+                <!-- Campo: Estudios Realizados -->
+                <div class="flex flex-col gap-2">
+                    <label for="estudios" class="text-sm font-semibold text-gray-300">Estudios Realizados</label>
+                    <input type="text" id="estudios" required placeholder="Ej. Bachiller, Técnico, Profesional" class="p-3 rounded-lg w-full">
+                </div>
+
+                <!-- Campo: Ocupación Actual -->
+                <div class="flex flex-col gap-2">
+                    <label for="ocupacion" class="text-sm font-semibold text-gray-300">Ocupación Actual</label>
+                    <input type="text" id="ocupacion" required placeholder="Ej. Estudiante, Agricultor, Comerciante" class="p-3 rounded-lg w-full">
+                </div>
+
+                <!-- Campo: Género -->
+                <div class="flex flex-col gap-2">
+                    <label for="genero" class="text-sm font-semibold text-gray-300">¿Cuál es tu género?</label>
+                    <select id="genero" required class="p-3 rounded-lg w-full cursor-pointer">
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                        <option value="LGBTQ+">LGBTQ+</option>
+                    </select>
+                </div>
+
+                <!-- Campo: Discapacidad -->
+                <div class="flex flex-col gap-2">
+                    <label for="discapacidad" class="text-sm font-semibold text-gray-300">¿Presenta alguna Discapacidad?</label>
+                    <select id="discapacidad" required class="p-3 rounded-lg w-full cursor-pointer">
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="Ninguna">Ninguna</option>
+                        <option value="Física">Física</option>
+                        <option value="Visual">Visual</option>
+                        <option value="Auditiva">Auditiva</option>
+                        <option value="Intelectual/Mental">Intelectual/Mental</option>
+                        <option value="Otra">Otra</option>
+                    </select>
+                </div>
+
+                <!-- Campo: Rango de Edad -->
+                <div class="flex flex-col gap-2">
+                    <label for="rango_edad" class="text-sm font-semibold text-gray-300">Rango de Edad</label>
+                    <select id="rango_edad" required class="p-3 rounded-lg w-full cursor-pointer">
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="13-17">13-17 (Adolescente)</option>
+                        <option value="18-29">18-29 (Joven)</option>
+                        <option value="30-59">30-59 (Adulto)</option>
+                        <option value="60+">60 o más (Adulto Mayor)</option>
+                    </select>
+                </div>
+
+                <!-- Campo: Fecha de Nacimiento -->
+                <div class="flex flex-col gap-2">
+                    <label for="fecha_nacimiento" class="text-sm font-semibold text-gray-300">Fecha de Nacimiento</label>
+                    <input type="date" id="fecha_nacimiento" required class="p-3 rounded-lg w-full cursor-pointer">
+                </div>
+
+                <!-- Campo: Teléfono -->
+                <div class="flex flex-col gap-2">
+                    <label for="telefono" class="text-sm font-semibold text-gray-300">Teléfono Celular</label>
+                    <input type="tel" id="telefono" required placeholder="Ej. 312765..." class="p-3 rounded-lg w-full">
+                </div>
+
+                <!-- Campo: Correo Electrónico -->
+                <div class="flex flex-col gap-2">
+                    <label for="correo" class="text-sm font-semibold text-gray-300">Correo Electrónico</label>
+                    <input type="email" id="correo" required placeholder="correo@ejemplo.com" class="p-3 rounded-lg w-full">
+                </div>
+
+                <!-- Campo: Fecha de Afiliación -->
+                <div class="flex flex-col gap-2">
+                    <label for="fecha_afiliacion" class="text-sm font-semibold text-gray-300">Fecha de Afiliación</label>
+                    <input type="date" id="fecha_afiliacion" required class="p-3 rounded-lg w-full cursor-pointer">
+                </div>
+
+                <!-- Campo: Grupo Étnico -->
+                <div class="flex flex-col gap-2">
+                    <label for="grupo_etnico" class="text-sm font-semibold text-gray-300">¿Cuál es tu grupo étnico?</label>
+                    <select id="grupo_etnico" required class="p-3 rounded-lg w-full cursor-pointer">
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="Mestizo">Mestizo</option>
+                        <option value="Afro">Afro</option>
+                        <option value="Indígena">Indígena</option>
+                        <option value="Campesino">Campesino</option>
+                    </select>
+                </div>
+
+                <!-- Botón Registrarse (Centrado en pantalla ancha) -->
+                <div class="md:col-span-2 flex justify-center mt-4">
+                    <button type="submit" id="btnRegistrar" class="gold-bg text-gray-950 font-bold px-10 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 flex items-center gap-2 text-lg shadow-lg">
+                        <span>💾</span> Registrar Afiliado
+                    </button>
+                </div>
+            </form>
+        </main>
+
+        <!-- Sección Secundaria: Ver Miembros Registrados -->
+        <section class="text-center">
+            <button id="btnVerUsuarios" class="bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 hover:border-gray-600 font-semibold px-6 py-2.5 rounded-xl transition-all duration-300 flex items-center gap-2 mx-auto mb-6 text-sm">
+                <span>👁️</span> Ver Miembros Guardados
+            </button>
+
+            <!-- Contenedor Dinámico de la Lista de Usuarios -->
+            <div id="contenedorLista" class="hidden bg-gray-900/60 backdrop-blur-md rounded-2xl p-6 gold-border max-h-[400px] overflow-y-auto text-left">
+                <h3 class="text-lg font-bold mb-4 gold-text border-b border-gray-800 pb-2 flex items-center gap-2">
+                    👥 Miembros de la Junta Registrados
+                </h3>
+                <div id="listaContenido" class="divide-y divide-gray-800">
+                    <!-- Se llena automáticamente con Javascript -->
+                    <p class="text-gray-400 text-center py-4">Cargando afiliados...</p>
+                </div>
             </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="identificacion">N° Identificación</label>
-                    <input type="text" id="identificacion" placeholder="Ej. 1087344..." required>
-                </div>
-                <div class="form-group">
-                    <label for="lugar_expedicion">Lugar de Expedición</label>
-                    <input type="text" id="lugar_expedicion" placeholder="Ej. Popayán" required>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="telefono">Teléfono / Celular</label>
-                    <input type="tel" id="telefono" placeholder="Ej. 312765..." required>
-                </div>
-                <div class="form-group">
-                    <label for="correo">Correo Electrónico</label>
-                    <input type="email" id="correo" placeholder="correo@ejemplo.com" required>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="estudios">Estudios Realizados</label>
-                    <input type="text" id="estudios" placeholder="Ej. Bachiller, Técnico..." required>
-                </div>
-                <div class="form-group">
-                    <label for="ocupacion">Ocupación Actual</label>
-                    <input type="text" id="ocupacion" placeholder="Ej. Estudiante, Barbero..." required>
-                </div>
-            </div>
-
-           <!-- Línea 199: Aquí cierra la fila de estudios y ocupación perfectamente --> 
-
-<!-- NUEVA FILA (Línea 200 en adelante): Para meter Género y Discapacidad juntos -->
-<!-- FILA: GÉNERO Y DISCAPACIDAD -->
-<div class="form-row">
-        <div class="form-group">
-            <label for="genero">¿Cuál es tu género?</label>
-            <select id="genero" required>
-                <option value="" disabled selected>Selecciona una opción</option>
-                <option value="Masculino">Masculino</option>
-                <option value="Femenino">Femenino</option>
-                <option value="LGBTQ+">LGBTQ+</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="discapacidad">¿Presenta alguna Discapacidad?</label>
-            <select id="discapacidad" required>
-                <option value="" disabled selected>Selecciona una opción</option>
-                <option value="Ninguna">Ninguna</option>
-                <option value="Física">Física</option>
-                <option value="Visual">Visual</option>
-                <option value="Auditiva">Auditiva</option>
-                <option value="Intelectual/Mental">Intelectual/Mental</option>
-                <option value="Otra">Otra</option>
-            </select>
-        </div>
+        </section>
     </div>
 
-    <div class="form-row">
-        <div class="form-group">
-            <label for="rango_edad">Rango de Edad</label>
-            <select id="rango_edad" required>
-                <option value="" disabled selected>Selecciona una opción</option>
-                <option value="13-17">13-17 (Adolescente)</option>
-                <option value="18-29">18-29 (Joven)</option>
-                <option value="30-59">30-59 (Adulto)</option>
-                <option value="60+">60 o más (Adulto Mayor)</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-            <input type="date" id="fecha_nacimiento" required>
-        </div>
-    </div>
-
-    <div class="form-row">
-        <div class="form-group">
-            <label for="fecha_afiliacion">Fecha de Afiliación</label>
-            <input type="date" id="fecha_afiliacion" required>
-        </div>
-        <div class="form-group">
-            <label for="grupo_etnico">¿Cuál es tu grupo étnico?</label>
-            <select id="grupo_etnico" required>
-                <option value="" disabled selected>Selecciona una opción</option>
-                <option value="Mestizo">Mestizo</option>
-                <option value="Afro">Afro</option>
-                <option value="Indígena">Indígena</option>
-                <option value="Campesino">Campesino</option>
-            </select>
-        </div>
-    </div>
-
-    <div style="display: flex; justify-content: center; width: 100%; margin-top: 20px; grid-column: span 2;">
-        <button type="submit" class="btn-registrar">Registrarse</button>
-    </div>
-
-</div> </form> ```
-
-
-
-        <button id="btnVerUsuarios" class="btn-ver">👁️ Ver Miembros Guardados</button>
-        
-        <div id="contenedorLista" class="lista-usuarios">
-            <h3 style="color: #d4af37; font-size: 1rem; margin-bottom: 10px;">Miembros Registrados:</h3>
-            <div id="listaContenido"></div>
-        </div>
-    </div>
+    <!-- Script de Lógica e Integración con Sheet.best -->
     <script>
-    var API_EXCEL = "https://api.sheetbest.com/sheets/55d29516-7c39-4205-8b89-6e9138b18830";
+        // URL de tu API en Sheet.best (coincide exactamente con tu conexión)
+        const API_EXCEL = "https://api.sheetbest.com/sheets/55d29516-7c39-4205-8b89-6e9138b18830";
 
-        // 1. FUNCIÓN PARA REGISTRAR USUARIOS DIRECTO EN EXCEL
-      // 1. FUNCIÓN PARA REGISTRAR USUARIOS DIRECTO EN EXCEL CON CONSECUTIVO AUTOMÁTICO
-document.getElementById('registroForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
+        const registroForm = document.getElementById('registroForm');
+        const alertBanner = document.getElementById('alertBanner');
+        const btnRegistrar = document.getElementById('btnRegistrar');
+        const btnVerUsuarios = document.getElementById('btnVerUsuarios');
+        const contenedorLista = document.getElementById('contenedorLista');
+        const listaContenido = document.getElementById('listaContenido');
 
-    try {
-        // 1. Consultamos los registros actuales en el Excel para calcular el consecutivo
-        let respuestaLineas = await fetch(API_EXCEL);
-        let registrosActuales = await respuestaLineas.json();
-        
-        // 2. Calculamos el consecutivo automático (Total filas + 1)
-        let siguienteNumero = registrosActuales.length + 1;
-
-        // 3. Armamos el objeto con TODOS los datos organizados para tu papá
-       var datos = {
-    numero: siguienteNumero,
-    nombre: document.getElementById('nombre').value,
-    rol: "Comunidad",
-    identificacion: document.getElementById('identificacion').value,
-    lugar_expedicion: document.getElementById('lugar_expedicion').value,
-    estudios: document.getElementById('estudios').value,
-    ocupacion: document.getElementById('ocupacion').value,
-    genero: document.getElementById('genero').value,
-    discapacidad: document.getElementById('discapacidad').value,
-    telefono: document.getElementById('telefono').value,
-    correo: document.getElementById('correo').value,
-    edad: document.getElementById('rango_edad').value,
-    fecha_nacimiento: document.getElementById('fecha_nacimiento').value,
-    fecha_afiliacion: document.getElementById('fecha_afiliacion').value,
-    grupo_etnico: document.getElementById('grupo_etnico').value
-};
-
-        // 4. Enviamos los datos completos a Sheet.best
-        var respuesta = await fetch(API_EXCEL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(datos)
-        });
-
-        if (respuesta.ok) {
-            alert("¡Éxito! Miembro registrado permanentemente como el afiliado N° " + siguienteNumero);
-            document.getElementById('registroForm').reset();
-        } else {
-            alert("Error al guardar en el servidor de Excel.");
+        // Función para mostrar alertas personalizadas (Reemplaza a los molestos alert)
+        function mostrarAlerta(mensaje, esExito = true) {
+            alertBanner.textContent = mensaje;
+            alertBanner.className = `mb-6 p-4 rounded-xl text-center font-semibold transition-all duration-300 ${
+                esExito 
+                    ? 'bg-emerald-500/15 border border-emerald-500/30 text-emerald-400' 
+                    : 'bg-rose-500/15 border border-rose-500/30 text-rose-400'
+            }`;
+            alertBanner.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-    } catch (error) {
-        console.error("Error de conexión:", error);
-        alert("Error al conectar con la base de datos.");
-    }
-});
+        // 1. Manejo del Envío del Formulario
+        registroForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
 
-        // 2. FUNCIÓN PARA VER LOS USUARIOS GUARDADOS EN PÁGINA
-        document.getElementById('btnVerUsuarios').addEventListener('click', async function() {
+            // Bloquear botón y mostrar carga
+            btnRegistrar.disabled = true;
+            btnRegistrar.innerHTML = `<span>⏳</span> Registrando...`;
+
             try {
-                var respuesta = await fetch(API_EXCEL);
-                var usuarios = await respuesta.json();
-                
-                if (respuesta.ok) {
-                    var contenedor = document.getElementById('listaUsuarios');
-                    if (!contenedor) {
-                        alert('Usuarios cargados correctamente. Revisa tu archivo de Google Sheets.');
-                        return;
+                // Obtener registros existentes para autocalcular el consecutivo 'numero'
+                const respuestaGet = await fetch(API_EXCEL);
+                const registrosActuales = await respuestaGet.json();
+                const siguienteNumero = registrosActuales.length + 1;
+
+                // Crear el objeto estructurado exactamente con tus columnas de Excel
+                const datos = {
+                    numero: siguienteNumero,
+                    nombre: document.getElementById('nombre').value,
+                    rol: "Comunidad",
+                    identificacion: document.getElementById('identificacion').value,
+                    lugar_expedicion: document.getElementById('lugar_expedicion').value,
+                    estudios: document.getElementById('estudios').value,
+                    ocupacion: document.getElementById('ocupacion').value,
+                    genero: document.getElementById('genero').value,
+                    discapacidad: document.getElementById('discapacidad').value,
+                    telefono: document.getElementById('telefono').value,
+                    correo: document.getElementById('correo').value,
+                    edad: document.getElementById('rango_edad').value,
+                    fecha_nacimiento: document.getElementById('fecha_nacimiento').value,
+                    fecha_afiliacion: document.getElementById('fecha_afiliacion').value,
+                    grupo_etnico: document.getElementById('grupo_etnico').value
+                };
+
+                // Enviar la información por POST
+                const respuestaPost = await fetch(API_EXCEL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(datos)
+                });
+
+                if (respuestaPost.ok) {
+                    mostrarAlerta(`¡Éxito! Miembro "${datos.nombre}" ha sido guardado correctamente con el número consecutivo ${siguienteNumero}.`, true);
+                    registroForm.reset();
+                    // Refrescar lista de usuarios si está abierta
+                    if (!contenedorLista.classList.contains('hidden')) {
+                        cargarAfiliados();
                     }
-                    
-                    contenedor.innerHTML = ''; // Limpiar la lista antes de mostrar
-
-                    if (usuarios.length === 0) {
-                        contenedor.innerHTML = '<p style="text-align:center;">No hay usuarios registrados aún.</p>';
-                        return;
-                    }
-
-                    // Dibujar cada usuario en pantalla con el diseño dorado elegante
-                    usuarios.forEach(function(u) {
-                        var tarjeta = document.createElement('div');
-                        tarjeta.style.background = '#1a1a1a';
-                        tarjeta.style.border = '1px solid #d4af37';
-                        tarjeta.style.padding = '15px';
-                        tarjeta.style.marginBottom = '10px';
-                        tarjeta.style.borderRadius = '5px';
-
-                        tarjeta.innerHTML = `
-                            <p style="margin: 0; font-weight: bold; color: #d4af37; font-size: 16px;">${u.nombre || 'Sin nombre'}</p>
-                            <p style="margin: 5px 0 0 0; font-size: 14px; color: white;"><strong>Rol:</strong> ${u.rol || ''} | <strong>Género:</strong> ${u.genero || ''}</p>
-                            <p style="margin: 5px 0 0 0; font-size: 14px; color: white;"><strong>Cédula:</strong> ${u.identificacion || ''} (${u.lugar_expedicion || ''})</p>
-                            <p style="margin: 5px 0 0 0; font-size: 14px; color: #aaa;"><strong>Teléfono:</strong> ${u.telefono || ''} | <strong>Correo:</strong> ${u.correo || ''}</p>
-                        `;
-                        contenedor.appendChild(tarjeta);
-                    });
                 } else {
-                    alert('Error al leer la base de datos.');
+                    throw new Error("Respuesta inválida del servidor.");
                 }
+
             } catch (error) {
-                alert('Error de conexión al leer usuarios.');
+                console.error(error);
+                mostrarAlerta("Hubo un error al intentar guardar en el Excel. Verifica tu conexión e inténtalo de nuevo.", false);
+            } finally {
+                // Habilitar botón de nuevo
+                btnRegistrar.disabled = false;
+                btnRegistrar.innerHTML = `<span>💾</span> Registrar Afiliado`;
             }
         });
-    </script> </body>
+
+        // 2. Cargar y visualizar afiliados de la base de datos
+        async function cargarAfiliados() {
+            listaContenido.innerHTML = `<p class="text-gray-400 text-center py-4 animate-pulse">Obteniendo listado de afiliados...</p>`;
+            try {
+                const respuesta = await fetch(API_EXCEL);
+                const datos = await respuesta.json();
+
+                if (datos.length === 0) {
+                    listaContenido.innerHTML = `<p class="text-gray-400 text-center py-4">Aún no hay miembros registrados.</p>`;
+                    return;
+                }
+
+                listaContenido.innerHTML = datos.map(afiliado => `
+                    <div class="py-3 flex justify-between items-center text-sm">
+                        <div>
+                            <p class="font-bold text-gray-200">${afiliado.nombre || 'Sin nombre'}</p>
+                            <p class="text-xs text-gray-400">CC: ${afiliado.identificacion || 'N/A'} | Cel: ${afiliado.telefono || 'N/A'}</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-yellow-500/10 text-yellow-400 border border-yellow-500/20">
+                                # ${afiliado.numero || 'N/A'}
+                            </span>
+                        </div>
+                    </div>
+                `).join('');
+
+            } catch (error) {
+                listaContenido.innerHTML = `<p class="text-rose-400 text-center py-4">Error al conectar con la base de datos.</p>`;
+            }
+        }
+
+        // Botón Ver/Ocultar listado
+        btnVerUsuarios.addEventListener('click', () => {
+            if (contenedorLista.classList.contains('hidden')) {
+                contenedorLista.classList.remove('hidden');
+                btnVerUsuarios.innerHTML = `<span>🙈</span> Ocultar Miembros`;
+                cargarAfiliados();
+            } else {
+                contenedorLista.classList.add('hidden');
+                btnVerUsuarios.innerHTML = `<span>👁️</span> Ver Miembros Guardados`;
+            }
+        });
+    </script>
+</body>
 </html>
