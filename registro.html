@@ -203,7 +203,6 @@
 <!-- NUEVA FILA (Línea 200 en adelante): Para meter Género y Discapacidad juntos -->
 <div class="form-row">
 
-    <!-- Bloque de Género -->
     <div class="form-group">
         <label for="genero">¿Cuál es tu género?</label>
         <select id="genero" required>
@@ -213,6 +212,19 @@
             <option value="LGBTQ+">LGBTQ+</option>
         </select>
     </div>
+
+    <div class="form-group">
+        <label for="rango_edad">Rango de Edad</label>
+        <select id="rango_edad" required>
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option value="13-17">13-17 (Adolescente)</option>
+            <option value="18-29">18-29 (Joven)</option>
+            <option value="30-59">30-59 (Adulto)</option>
+            <option value="60">60 o más (Adulto Mayor)</option>
+        </select>
+    </div>
+
+</div>
 
     <!-- Bloque de Discapacidad -->
     <div class="form-group">
