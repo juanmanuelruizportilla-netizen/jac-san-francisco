@@ -203,72 +203,70 @@
 <!-- NUEVA FILA (Línea 200 en adelante): Para meter Género y Discapacidad juntos -->
 <!-- FILA: GÉNERO Y DISCAPACIDAD -->
 <div class="form-row">
-    <div class="form-group">
-        <label for="genero">¿Cuál es tu género?</label>
-        <select id="genero" required>
-            <option value="" disabled selected>Selecciona una opción</option>
-            <option value="Masculino">Masculino</option>
-            <option value="Femenino">Femenino</option>
-            <option value="LGBTQ+">LGBTQ+</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="discapacidad">¿Presenta alguna Discapacidad?</label>
-        <select id="discapacidad" required>
-            <option value="" disabled selected>Selecciona una opción</option>
-            <option value="Ninguna">Ninguna</option>
-            <option value="Física">Física</option>
-            <option value="Visual">Visual</option>
-            <option value="Auditiva">Auditiva</option>
-            <option value="Intelectual/Mental">Intelectual/Mental</option>
-            <option value="Otra">Otra</option>
-        </select>
-    </div>
-</div>
-
-<!-- FILA: EDAD Y FECHA DE NACIMIENTO -->
-<div class="form-row">
-    <div class="form-group">
-        <label for="rango_edad">Rango de Edad</label>
-        <select id="rango_edad" required>
-            <option value="" disabled selected>Selecciona una opción</option>
-            <option value="13-17">13-17 (Adolescente)</option>
-            <option value="18-29">18-29 (Joven)</option>
-            <option value="30-59">30-59 (Adulto)</option>
-            <option value="60+">60 o más (Adulto Mayor)</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-        <input type="date" id="fecha_nacimiento" required>
-    </div>
-</div>
-
-</div>
-
-<div class="form-row">
-            <div class="form-group">
-                <label for="fecha_afiliacion">Fecha de Afiliación</label>
-                <input type="date" id="fecha_afiliacion" required>
-            </div>
-            <div class="form-group">
-                <label for="grupo_etnico">¿Cuál es tu grupo étnico?</label>
-                <select id="grupo_etnico" required>
-                    <option value="" disabled selected>Selecciona una opción</option>
-                    <option value="Mestizo">Mestizo</option>
-                    <option value="Afro">Afro</option>
-                    <option value="Indígena">Indígena</option>
-                    <option value="Campesino">Campesino</option>
-                </select>
-            </div>
+        <div class="form-group">
+            <label for="genero">¿Cuál es tu género?</label>
+            <select id="genero" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+                <option value="LGBTQ+">LGBTQ+</option>
+            </select>
         </div>
+        <div class="form-group">
+            <label for="discapacidad">¿Presenta alguna Discapacidad?</label>
+            <select id="discapacidad" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="Ninguna">Ninguna</option>
+                <option value="Física">Física</option>
+                <option value="Visual">Visual</option>
+                <option value="Auditiva">Auditiva</option>
+                <option value="Intelectual/Mental">Intelectual/Mental</option>
+                <option value="Otra">Otra</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="rango_edad">Rango de Edad</label>
+            <select id="rango_edad" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="13-17">13-17 (Adolescente)</option>
+                <option value="18-29">18-29 (Joven)</option>
+                <option value="30-59">30-59 (Adulto)</option>
+                <option value="60+">60 o más (Adulto Mayor)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+            <input type="date" id="fecha_nacimiento" required>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group">
+            <label for="fecha_afiliacion">Fecha de Afiliación</label>
+            <input type="date" id="fecha_afiliacion" required>
+        </div>
+        <div class="form-group">
+            <label for="grupo_etnico">¿Cuál es tu grupo étnico?</label>
+            <select id="grupo_etnico" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="Mestizo">Mestizo</option>
+                <option value="Afro">Afro</option>
+                <option value="Indígena">Indígena</option>
+                <option value="Campesino">Campesino</option>
+            </select>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: center; width: 100%; margin-top: 20px; grid-column: span 2;">
+        <button type="submit" class="btn-registrar">Registrarse</button>
+    </div>
+
+</div> </form> ```
 
 
-<div style="display: flex; justify-content: center; width: 100%; margin-top: 20px; grid-column: span 2;">
-    <button type="submit" class="btn-registrar">Registrarse</button>
-</div>
-</div>
-</form>
 
         <button id="btnVerUsuarios" class="btn-ver">👁️ Ver Miembros Guardados</button>
         
