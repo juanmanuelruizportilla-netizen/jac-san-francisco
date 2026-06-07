@@ -213,6 +213,7 @@
         </select>
     </div>
 
+    <div class="form-row">
     <div class="form-group">
         <label for="rango_edad">Rango de Edad</label>
         <select id="rango_edad" required>
@@ -220,9 +221,14 @@
             <option value="13-17">13-17 (Adolescente)</option>
             <option value="18-29">18-29 (Joven)</option>
             <option value="30-59">30-59 (Adulto)</option>
-            <option value="60">60 o más (Adulto Mayor)</option>
+            <option value="60+">60 o más (Adulto Mayor)</option>
         </select>
     </div>
+    <div class="form-group">
+        <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+        <input type="date" id="fecha_nacimiento" required>
+    </div>
+</div>
 
 </div>
 
@@ -285,22 +291,23 @@ document.getElementById('registroForm').addEventListener('submit', async functio
         let siguienteNumero = registrosActuales.length + 1;
 
         // 3. Armamos el objeto con TODOS los datos organizados para tu papá
-        var datos = {
-            numero: siguienteNumero,
-            nombre: document.getElementById('nombre').value,
-            rol: "Comunidad",
-            identificacion: document.getElementById('identificacion').value,
-            lugar_expedicion: document.getElementById('lugar_expedicion').value,
-            estudios: document.getElementById('estudios').value,
-            ocupacion: document.getElementById('ocupacion').value,
-            genero: document.getElementById('genero').value,
-            discapacidad: document.getElementById('discapacidad').value,
-            telefono: document.getElementById('telefono').value,
-            correo: document.getElementById('correo').value,
-            edad: document.getElementById('rango_edad').value,
-            fecha_afiliacion: document.getElementById('fecha_afiliacion').value,
-            grupo_etnico: document.getElementById('grupo_etnico').value
-        };
+       var datos = {
+    numero: siguienteNumero,
+    nombre: document.getElementById('nombre').value,
+    rol: "Comunidad",
+    identificacion: document.getElementById('identificacion').value,
+    lugar_expedicion: document.getElementById('lugar_expedicion').value,
+    estudios: document.getElementById('estudios').value,
+    ocupacion: document.getElementById('ocupacion').value,
+    genero: document.getElementById('genero').value,
+    discapacidad: document.getElementById('discapacidad').value,
+    telefono: document.getElementById('telefono').value,
+    correo: document.getElementById('correo').value,
+    edad: document.getElementById('rango_edad').value,
+    fecha_nacimiento: document.getElementById('fecha_nacimiento').value,
+    fecha_afiliacion: document.getElementById('fecha_afiliacion').value,
+    grupo_etnico: document.getElementById('grupo_etnico').value
+};
 
         // 4. Enviamos los datos completos a Sheet.best
         var respuesta = await fetch(API_EXCEL, {
