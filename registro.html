@@ -226,6 +226,23 @@
 
 </div>
 
+<div class="form-row">
+            <div class="form-group">
+                <label for="fecha_afiliacion">Fecha de Afiliación</label>
+                <input type="date" id="fecha_afiliacion" required>
+            </div>
+            <div class="form-group">
+                <label for="grupo_etnico">¿Cuál es tu grupo étnico?</label>
+                <select id="grupo_etnico" required>
+                    <option value="" disabled selected>Selecciona una opción</option>
+                    <option value="Mestizo">Mestizo</option>
+                    <option value="Afro">Afro</option>
+                    <option value="Indígena">Indígena</option>
+                    <option value="Campesino">Campesino</option>
+                </select>
+            </div>
+        </div>
+
     <!-- Bloque de Discapacidad -->
     <div class="form-group">
         <label for="discapacidad">¿Presenta alguna Discapacidad?</label>
@@ -255,40 +272,57 @@
     var API_EXCEL = "https://api.sheetbest.com/sheets/b0ea9caf-f675-489f-9cae-feaef4dad973";
 
         // 1. FUNCIÓN PARA REGISTRAR USUARIOS DIRECTO EN EXCEL
-        document.getElementById('registroForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
+      // 1. FUNCIÓN PARA REGISTRAR USUARIOS DIRECTO EN EXCEL CON CONSECUTIVO AUTOMÁTICO
+document.getElementById('registroForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
 
-            var datos = {
-                nombre: document.getElementById('nombre').value,
-                rol: "Comunidad", //  Dejándola así, en tu Excel se seguirá escribiendo la palabra "Comunidad" automáticamente
-                identificacion: document.getElementById('identificacion').value,
-                lugar_expedicion: document.getElementById('lugar_expedicion').value,
-                estudios: document.getElementById('estudios').value,
-                ocupacion: document.getElementById('ocupacion').value,
-                genero: document.getElementById('genero').value,
-                discapacidad: document.getElementById('discapacidad').value,
-                telefono: document.getElementById('telefono').value,
-                correo: document.getElementById('correo').value,
-                edad: document.getElementById('rango_edad').value
-            };
+    try {
+        // 1. Consultamos los registros actuales en el Excel para calcular el consecutivo
+        let respuestaLineas = await fetch(API_EXCEL);
+        let registrosActuales = await respuestaLineas.json();
+        
+        // 2. Calculamos el consecutivo automático (Total filas + 1)
+        let siguienteNumero = registrosActuales.length + 1;
 
-            try {
-                var respuesta = await fetch(API_EXCEL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(datos)
-                });
+        // 3. Armamos el objeto con TODOS los datos organizados para tu papá
+        var datos = {
+            numero: siguienteNumero,
+            nombre: document.getElementById('nombre').value,
+            rol: "Comunidad",
+            identificacion: document.getElementById('identificacion').value,
+            lugar_expedicion: document.getElementById('lugar_expedicion').value,
+            estudios: document.getElementById('estudios').value,
+            ocupacion: document.getElementById('ocupacion').value,
+            genero: document.getElementById('genero').value,
+            discapacidad: document.getElementById('discapacidad').value,
+            telefono: document.getElementById('telefono').value,
+            correo: document.getElementById('correo').value,
+            edad: document.getElementById('rango_edad').value,
+            fecha_afiliacion: document.getElementById('fecha_afiliacion').value,
+            grupo_etnico: document.getElementById('grupo_etnico').value
+        };
 
-                if (respuesta.ok) {
-                    alert('¡Éxito! Miembro registrado permanentemente en la base de datos.');
-                    document.getElementById('registroForm').reset();
-                } else {
-                    alert('Error al guardar en el servidor de Excel.');
-                }
-            } catch (error) {
-                alert('Error al conectar con la base de datos.');
-            }
+        // 4. Enviamos los datos completos a Sheet.best
+        var respuesta = await fetch(API_EXCEL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(datos)
         });
+
+        if (respuesta.ok) {
+            alert("¡Éxito! Miembro registrado permanentemente como el afiliado N° " + siguienteNumero);
+            document.getElementById('registroForm').reset();
+        } else {
+            alert("Error al guardar en el servidor de Excel.");
+        }
+
+    } catch (error) {
+        console.error("Error de conexión:", error);
+        alert("Error al conectar con la base de datos.");
+    }
+});
 
         // 2. FUNCIÓN PARA VER LOS USUARIOS GUARDADOS EN PÁGINA
         document.getElementById('btnVerUsuarios').addEventListener('click', async function() {
