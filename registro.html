@@ -157,7 +157,7 @@
 
     <div class="container">
         <h2>Únete a la Comunidad</h2>
-        <p class="subtitle">Completa tu perfil de miembro Elite</p>
+        <p class="subtitle">unete a la comunidad de la JAC San Francisco</p>
 
         <form id="registroForm">
             <div class="form-group">
@@ -198,15 +198,7 @@
                 </div>
             </div>
 
-         <div class="form-row">
-            <div class="form-group">
-                <label for="rol">Tipo de Miembro</label>
-                <select id="rol" required>
-                    <option value="" disabled selected>Selecciona una opción</option>
-                    <option value="Barbero">Barbería Elite</option>
-                    <option value="Agronomo">Agrónomo / Campo</option>
-                    <option value="Miembro">Miembro Regular</option>
-                </select>
+    
             </div>
 
             <div class="form-group">
@@ -248,7 +240,7 @@
 
             var datos = {
                 nombre: document.getElementById('nombre').value,
-                rol: document.getElementById('rol').value,
+               rol: "Comunidad", //  Dejándola así, en tu Excel se seguirá escribiendo la palabra "Comunidad" automáticamente
                 identificacion: document.getElementById('identificacion').value,
                 lugar_expedicion: document.getElementById('lugar_expedicion').value,
                 estudios: document.getElementById('estudios').value,
